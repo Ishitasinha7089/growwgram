@@ -1,0 +1,13 @@
+.ggProfileSuggestions9305{
+    position: fixed;
+    margin-top:40px;
+    flex-direction: column;
+    width: 290px;
+    height: 100vh;
+    left: 1080px;
+}
+
+.ggProfileSuggestions9305 h3{
+    font-size: 17px;
+    font-weight: 400;
+}

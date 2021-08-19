@@ -1,0 +1,22 @@
+
+.ggHeader9305{
+    height: 54px;
+    width: 100%;
+    background-color: var(--primary);
+    top: 0;
+    border-bottom: 1px solid var(--grey);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 99;
+}
+.ggHeader9305 a{
+    color: var(--secondary);
+    text-decoration: none;
+}
+.ggHeader9305 h1{
+    font-family: InstagramFont;
+    font-size: 26px;
+    width: 892px;
+}

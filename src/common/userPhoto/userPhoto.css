@@ -1,0 +1,38 @@
+.ggProfileUserPhoto9305{
+    width: fit-content;
+    position: relative;
+    cursor: pointer;
+}
+
+.ggProfileUserPhoto9305 .ggUserPhoto9305{
+    height: 270px;
+    width: 270px;
+    object-fit: cover;
+}
+.ggProfileUserPhoto9305 .ggUserPhotoOverlay9305{
+    position: absolute;
+    top:0;
+    width: 100%;
+    background-color: var(--overlay);
+    height: 270px;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    /* transition: all 0.5s ease-out; */
+}
+.ggProfileUserPhoto9305 .ggUserPhotoOverlay9305 span{
+    color: var(--primary);
+    font-size:20px;
+    margin-left: 8px;
+}
+.ggProfileUserPhoto9305 .ggUserPhotoOverlay9305 .ggUserPhotoLikes9305{
+    stroke: var(--primary);
+    fill: var(--primary);
+    height: 22px;
+    width: 24px;
+    margin-top: 4px;
+}
+
+.ggProfileUserPhoto9305 .ggShowOverlay9305{
+    visibility: visible;
+}

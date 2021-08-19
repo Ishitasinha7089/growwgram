@@ -1,0 +1,69 @@
+.ggPost9305{
+    height: fit-content;
+    width: 602px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    margin-top: 30px;
+    /* overflow: hidden; */
+}
+.ggPost9305 .ggPostHeader9305{
+    padding: 16px;
+    flex-direction: row;
+    align-items: center;
+}
+.ggPost9305 .ggPostHeader9305 .ggAvatar9305{
+    height: 40px;
+    width: 40px;
+    margin-right: 16px;
+}
+.ggPost9305 .ggPostImage9305{
+    object-fit: cover;
+    width: 600px;
+    max-height: 740px;
+    object-position: center;
+}
+
+.ggPost9305 .ggPostFooter9305{
+    flex-direction: column;
+    padding: 16px;
+    margin-top: 0;
+}
+.ggPost9305 .ggPostFooter9305 .ggIcons9305{
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggIconItem9305{
+    margin-right: 12px;
+}
+
+.ggPost9305 .ggPostFooter9305 .ggPostLikes9305{
+    font-size: 17px;
+}
+
+
+.ggPost9305 .ggPostFooter9305 .ggPostCaption9305{
+    font-weight: 300;
+    font-size: 16px;
+    margin: 8px 0;
+    text-overflow: clip;
+}
+.ggPost9305 .ggPostFooter9305 .ggPostCaption9305 a,
+.ggPost9305 .ggPostHeader9305 a{
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+
+.ggPost9305 .ggPostFooter9305 .ggPostCaption9305 a:hover,
+.ggPost9305 .ggPostHeader9305 a:hover{
+    text-decoration: underline;
+}
+.ggPost9305 .ggPostFooter9305 .ggPostTimeStamp9305{
+    font-size: 14px;
+    color: var(--textGrey);
+    font-weight: 400;
+}

@@ -1,0 +1,9 @@
+html{
+    --background:#fafafa;
+    --grey:#dbdbdb;
+    --primary:#ffffff;
+    --textGrey:#a3a3a3;
+    --secondary:#000000;
+    --overlay:rgba(0, 0, 0, 0.5);
+    --bgShimmer: linear-gradient(to right, #eff1f3 10%, #eeeeee 50%, #eff1f3 36%);
+}

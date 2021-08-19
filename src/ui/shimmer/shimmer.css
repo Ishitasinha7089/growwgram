@@ -1,0 +1,24 @@
+.ggAvatarShimmer9305{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 10px
+}
+.ggTextShimmer9305{
+    height: 12px;
+    border-radius: 10px;
+}
+.animate {
+    animation : shimmer 2s infinite linear;
+    background: var(--bgShimmer);
+    background-size: 1000px 100%;
+ }
+ 
+ @keyframes shimmer {
+   0% {
+     background-position: -1000px 0;
+   }
+   100% {
+     background-position: 1000px 0;
+   }
+ }

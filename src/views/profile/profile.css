@@ -1,0 +1,57 @@
+.ggProfile9305{
+    flex-direction: column;
+    padding: 90px 0 60px;
+    margin: auto;
+    width: 892px;
+
+}
+.ggProfile9305 .ggProfileHeader9305{
+    flex-direction: row;
+    justify-content: flex-start;
+    border-bottom: 1px solid #dbdbdb;
+    padding-bottom: 50px;
+}
+
+.ggProfile9305 .ggProfileHeader9305 img,
+.ggProfile9305 .ggProfileHeader9305 .ggAvatarShimmer9305{
+    width: 170px;
+    height: 170px;
+    margin: 0 90px;
+}
+.ggProfile9305 .ggProfileHeader9305 .ggProfileUserInfo9305{
+    flex-direction: column;
+}
+.ggProfile9305 .ggProfileHeader9305 .ggProfileUserInfo9305 .ggProfileUsername9305{
+    font-size: 30px;
+    font-weight: 300;
+}
+.ggProfile9305 .ggProfileHeader9305 .ggProfileUserInfo9305 .ggProfileUserStats9305{
+    margin-top: 16px;
+}
+.ggProfileHeader9305 .ggProfileUserInfo9305 .ggProfileUserStats9305 span{
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+.ggProfile9305 .ggProfileUserInfo9305 .ggProfileName9305{
+    margin-top: 24px;
+    font-size: 18px;
+}
+
+.ggProfile9305 .ggProfileUserInfo9305 .ggProfileBio9305{
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 8px;
+    width:100%;
+    position: relative; 
+    white-space: wrap;
+}
+
+.ggProfile9305 .ggProfileBody9305{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(290px, 1fr) );
+    width: 100%;
+    row-gap: 20px;
+    margin-top: 30px;
+    justify-items: center;
+}
