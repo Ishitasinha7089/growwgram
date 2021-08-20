@@ -17,15 +17,19 @@ const ProfileSuggestions = () => {
     }, [])
 
     return (
+        profileSugg?
         <div className="ggProfileSuggestions9305 flexbox">
             <h3>Suggestions for you</h3>
-            { profileSugg?
+            <div className="ggProfileSuggInner9305 flexbox">
+            {
                 profileSugg.map((ele: User) =>{
                     return <ProfileDesc key={ele.id} user={ele} />
                 })
-                : null
             }
+            </div>
         </div>
+        :
+        null
     )
 }
 

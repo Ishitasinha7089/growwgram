@@ -19,3 +19,11 @@
     font-size: 14px;
     color:var(--textGrey);
 }
+
+@media screen and (max-width:790px) {
+    .ggProfileDesc9305{
+        margin: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}

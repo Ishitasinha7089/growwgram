@@ -5,3 +5,13 @@
     width: 892px;
     position: relative;
 }
+
+@media screen and (max-width:790px) {
+    .ggNewsFeed9305{
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        width: 100%;
+        padding: 80px 0;
+    }
+}

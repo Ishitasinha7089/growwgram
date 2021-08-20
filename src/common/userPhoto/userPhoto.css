@@ -36,3 +36,24 @@
 .ggProfileUserPhoto9305 .ggShowOverlay9305{
     visibility: visible;
 }
+
+@media screen and (max-width:883px) {
+    .ggProfileUserPhoto9305 .ggUserPhoto9305{
+        height: 220px;
+        width: 220px;
+    }
+}
+
+@media screen and (max-width:736px) {
+    .ggProfileUserPhoto9305 .ggUserPhoto9305{
+        height: 140px;
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .ggProfileUserPhoto9305 .ggUserPhoto9305{
+        height: 100px;
+        width: 100px;
+    }
+}

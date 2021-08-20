@@ -22,6 +22,14 @@ export const fetchPosts = () =>{
     };
 };
 
+export const fetchSinglePost = () =>{
+    return async (dispatch: (arg0: { type: string; payload: AxiosResponse<any>; }) => void) => {
+        
+        const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=1`)
+        dispatch({ type: 'GET_ONE_POST', payload: response.data })
+    };
+}
+
 export const getUser = (username: string) =>{
     return async (dispatch: (arg0: { type: string; payload: AxiosResponse<any>; }) => void) => {
         

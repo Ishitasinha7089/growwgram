@@ -6,40 +6,69 @@ import lscache from 'lscache';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 
-import { fetchPosts } from '../../store/actions';
+import {
+  fetchPosts,
+  fetchSinglePost,
+} from '../../store/actions';
 import {
   AvatarShimmer,
   ImageShimmer,
   TextShimmer,
 } from '../../ui/shimmer';
 import { Photo } from '../../utils/helpers/types';
-import { fetchData } from '../../utils/storage';
 import Post from '../post';
 
 type Props = {
     posts: Array<Photo>,
-    fetchPosts: () => Promise<void>
+    fetchPosts: () => Promise<void>,
+    fetchSinglePost: () => Promise<void>,
+    onePost: Array<Photo>
 }
 class PostList extends Component<Props> {
     state = {
-        posts: []
+        posts: [],
+        hasMore: true,
+        error: null,
     }
     componentDidMount() {
         const { posts, fetchPosts } = this.props
-        this.setState({
-            posts: lscache.get('posts')? lscache.get('posts'): posts
-        })
+        if(lscache.get('posts')){
+            this.setState({
+                posts: lscache.get('posts')
+            })
+        }
+        else{
+            fetchPosts()
+            .then(() =>{
+                this.setState({
+                    posts: posts
+                })
+            })
+            .catch((err) =>{
+                this.setState({
+                    error: "Rate Limit Exceeded"+ err.message
+                })
+            })
+            
+        }
+       
+        console.log(this.state.posts, this.props.posts, lscache.get('posts'));
         
-        fetchData(fetchPosts)
     }
     render() {
-        const { posts } = this.state;
+        const {posts, error}= this.state
         return (
             <div className="ggPostList9305 flexbox">
-                { posts.length?
-                this.getInfiniteScrollUI()
-                :
-                this.getPostLoadingUI()
+                {  
+                   error?
+                   this.getErrorUI()
+                   :
+                   (
+                    posts.length && !error?
+                    this.getInfiniteScrollUI()
+                    :
+                    this.getPostLoadingUI()
+                   )
                 }
             </div>
         );
@@ -68,39 +97,60 @@ class PostList extends Component<Props> {
     }
 
     loadMore = () =>{
-        this.props.fetchPosts()
-        let temp: Array<Photo> = [...this.state.posts]
-        let temp2 = temp.concat(this.props.posts)
+        console.log(this.props.onePost[0]);
+        
         setTimeout(() => {
+            this.props.fetchSinglePost()
+            let temp: Array<Photo> = [...this.state.posts]
+            // let temp2 = uniq(temp.push(this.props.onePost[0]))
+            console.log(this.props.onePost[0], [...this.state.posts, this.props.onePost[0]]);
+            
             this.setState({
-                posts: temp2
+                posts: temp
             })
-            // console.log("newijiasdjk", temp2);
-        }, 4000);
+            if(this.state.posts.length>=30){
+                this.setState({
+                    hasMore: false
+                })
+                return
+            }
+        }, 1000);
     }
 
     getInfiniteScrollUI  = () =>{
-        const { posts } = this.state
+        const { posts, hasMore } = this.state
         return(
             <InfiniteScroll
             pageStart={0}
             loadMore={this.loadMore}
-            hasMore={true}
+            hasMore={hasMore}
             loader={<h1>loading</h1>}
             >
                 {
-                    posts.map((post: Photo) =>{
-                        return <Post key={post.id} post= {post} />
+                    posts.map((post: Photo, indx) =>{
+                        const key = post.id? post.id : "post"+indx
+                        console.log(key);
+                        
+                        return <Post key={key} post= {post} />
                     })
                 }
             </InfiniteScroll>
+        );
+    }
+
+    getErrorUI = () =>{
+        const {error} = this.state
+        return (
+            <div className="ggNoPost9305 flexbox">
+                <h1>Oops, {error}. Try again after an hour</h1>
+            </div>
         );
     }
     
 }
 
 const mapsStateToProps = (state: any) =>{
-    return { posts: state.posts }
+    return { posts: state.posts, onePost: state.onePost }
 }
 
-export default connect(mapsStateToProps, { fetchPosts })(PostList)
+export default connect(mapsStateToProps, { fetchPosts, fetchSinglePost })(PostList)

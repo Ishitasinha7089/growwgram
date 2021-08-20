@@ -67,7 +67,7 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
     }
 
     const getUserInfo = (user: ProfileUser) =>{
-        const isData = user.username && user.bio && user.name && user.total_photos && user.followers_count && user.following_count
+        const isData = user.username || user.bio || user.name || user.total_photos || user.followers_count || user.following_count
         return (
             isData?
             <div className="ggProfileUserInfo9305 flexbox">

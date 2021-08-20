@@ -32,6 +32,7 @@ html{
   align-items: center;
   visibility: hidden;
   cursor: pointer;
+  box-shadow: 0 0 30px var(--grey);
 }
 .App .showBackToTop{
   visibility: visible;

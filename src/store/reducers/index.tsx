@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import getOnePostReducer from './getOnePost';
 import getUserPhotosReducer from './getUserPhotosReducer';
 import getUserReducer from './getUserReducer';
 import postsReducer from './postsReducer';
@@ -10,5 +11,6 @@ export default combineReducers({
     posts: postsReducer,
     profileSugg: profileSugReducer,
     user: getUserReducer,
-    userPhotos: getUserPhotosReducer
+    userPhotos: getUserPhotosReducer,
+    onePost: getOnePostReducer
 })

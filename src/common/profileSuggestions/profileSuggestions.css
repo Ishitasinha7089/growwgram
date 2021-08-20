@@ -1,13 +1,32 @@
 .ggProfileSuggestions9305{
-    position: fixed;
+    position: sticky;
     margin-top:40px;
     flex-direction: column;
     width: 290px;
     height: 100vh;
-    left: 1080px;
+    margin-left: 40px;
+    top: 100px;
 }
 
 .ggProfileSuggestions9305 h3{
     font-size: 17px;
     font-weight: 400;
+}
+.ggProfileSuggestions9305 .ggProfileSuggInner9305{
+    flex-direction: column;
+}
+
+@media screen and (max-width:790px) {
+    .ggProfileSuggestions9305{
+        position: relative;
+        height: fit-content;
+        top:0;
+        padding: 0 30px;
+        margin: 0;
+        width: 100%;
+    }
+    .ggProfileSuggestions9305 .ggProfileSuggInner9305{
+        flex-direction: row;
+        overflow-x: scroll;
+    }
 }

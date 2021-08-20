@@ -20,3 +20,12 @@
     font-size: 26px;
     width: 892px;
 }
+@media screen and (max-width:940px){
+    .ggHeader9305{
+        padding-left: 30px;
+        justify-content: flex-start;
+    }
+    .ggHeader9305 h1{
+        width: fit-content;
+    }
+}
