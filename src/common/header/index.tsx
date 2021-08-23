@@ -13,7 +13,7 @@ import sun from '../../styles/icons/sun.svg';
 
 const Header = () => {
     const [src, setSrc] = useState(sun)
-    const lsDark = lscache.get('dark')!==null? lscache.get('dark') : false
+    // const lsDark = lscache.get('dark')!==null? lscache.get('dark') : false
     const [dark, isDark] = useState(lscache.get('dark'))
     useEffect(() => {
         if(lscache.get('dark')) {
