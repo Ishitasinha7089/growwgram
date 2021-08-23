@@ -3,12 +3,13 @@
     padding: 90px 0 60px;
     margin: auto;
     width: 892px;
+    color: var(--secondary);
 
 }
 .ggProfile9305 .ggProfileHeader9305{
     flex-direction: row;
     justify-content: flex-start;
-    border-bottom: 1px solid #dbdbdb;
+    border-bottom: 1px solid vaR(--grey);
     padding-bottom: 50px;
 }
 
@@ -54,6 +55,15 @@
     row-gap: 20px;
     margin-top: 30px;
     justify-items: center;
+}
+.ggNoUser9305{
+    align-items: center;
+    flex-direction: column;
+    height: calc(100vh - 54px);
+    width: 100%;
+}
+.ggNoUser9305 h1{
+    margin: 150px;
 }
 
 @media screen and (max-width:883px) {

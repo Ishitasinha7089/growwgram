@@ -1,9 +1,13 @@
-const postsReducer = (state = [], action: { type: string, payload: object}) =>{
+import { Photo } from '../../utils/helpers/types';
+
+const postsReducer = (state: Array<Photo> = [], action: { type: string, payload: Array<object>}) =>{
     switch (action.type) {
         case 'FETCH_POSTS':
-            return action.payload;
+            const newPosts = action.payload
+            console.log([...state, ...newPosts], "reducer");
+            return [...state, ...newPosts];
         default:
-            return state;
+            return state
     }
 }
 

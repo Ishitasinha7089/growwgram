@@ -1,6 +1,9 @@
 import './profile.css';
 
-import { useEffect } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router';
@@ -13,7 +16,6 @@ import {
 import Avatar from '../../ui/avatar';
 import {
   AvatarShimmer,
-  ImageShimmer,
   TextShimmer,
 } from '../../ui/shimmer';
 import {
@@ -31,11 +33,16 @@ type Props = {
 
 const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
     const location = useLocation()
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         window.scrollTo(0,0)
         getUser(location.pathname.replace("/", ""))
+        .catch((err) =>{
+            setError(err.message)
+        })
         getUserPhotos(location.pathname.replace("/", ""))
+        console.log(location, userPhotos);
         
     },[location])
 
@@ -46,25 +53,22 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
             <AvatarShimmer />
     }
 
-    const getUserPhotosUI = (userPhotos: Array<Photo>) =>{
-            let shimmers = [];
-            for (let i = 0; i < 9; i++) {
-                shimmers.push(<ImageShimmer width="270px" height="270px" />)
-                
-            }
-            return (
-                <div className="ggProfileBody9305">
-                    {userPhotos.length?
-                     userPhotos.map((photo: Photo, indx) =>{
-                            return <UserPhoto key={photo.id} src={photo?.urls?.small} likes={photo?.likes} />
-                    }) 
-                    :
-                    shimmers
-                    }
-                </div>
-            )
+    // const getUserPhotosUI = (userPhotos: Array<Photo>) =>{
+    //         let shimmers = [];
+    //         for (let i = 0; i < userPhotos.length; i++) {
+    //             shimmers.push(<ImageShimmer key={i} width="270px" height="270px" />)
+    //         }
+    //         return (
+    //             <div className="ggProfileBody9305">
+    //                 {
+    //                 userPhotos.map((photo: Photo, indx) =>{
+    //                     return <UserPhoto key={photo.id} src={photo?.urls?.small} likes={photo?.likes} />
+    //                 })
+    //                 }
+    //             </div>
+    //         )
             
-    }
+    // }
 
     const getUserInfo = (user: ProfileUser) =>{
         const isData = user.username || user.bio || user.name || user.total_photos || user.followers_count || user.following_count
@@ -94,7 +98,15 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
             
         )
     }
+    const  getErrorUI = () =>{
+        return (
+            <div className="ggNoUser9305 flexbox">
+                <h1>Oops, {error}. Try again after an hour</h1>
+            </div>
+        );
+    }
     return ( 
+        user.id?
         <div className="ggProfile9305 flexbox">
             <div className="ggProfileHeader9305 flexbox">
                 <div className="ggProfileAvatar">
@@ -102,8 +114,18 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
                 </div>
                 {getUserInfo(user)}
             </div>
-            {getUserPhotosUI(userPhotos)}
+            {/* {getUserPhotosUI(userPhotos)} */}
+            <div className="ggProfileBody9305">
+            {
+                userPhotos.map((photo: Photo, indx) =>{
+                    return <UserPhoto key={photo.id} src={photo?.urls?.small} likes={photo?.likes} />
+                })
+                }
+            </div>
         </div>
+        :
+        // null
+        getErrorUI()
     )
 }
 

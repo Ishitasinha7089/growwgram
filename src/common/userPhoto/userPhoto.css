@@ -8,6 +8,7 @@
     height: 270px;
     width: 270px;
     object-fit: cover;
+    background-color: var(--primary);
 }
 .ggProfileUserPhoto9305 .ggUserPhotoOverlay9305{
     position: absolute;

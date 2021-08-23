@@ -6,6 +6,7 @@
     height: 100vh;
     margin-left: 40px;
     top: 100px;
+    color:var(--secondary);
 }
 
 .ggProfileSuggestions9305 h3{

@@ -7,3 +7,12 @@ html{
     --overlay:rgba(0, 0, 0, 0.5);
     --bgShimmer: linear-gradient(to right, #eff1f3 10%, #eeeeee 50%, #eff1f3 36%);
 }
+html[data-theme='dark'] {
+    --background:#0e0e0e;
+    --grey:#272727;
+    --primary:#080808;
+    --textGrey:#757575;
+    --secondary:#ffffff;
+    --overlay:rgba(0, 0, 0, 0.5);
+    --bgShimmer: linear-gradient(to right, #1f1e1e 10%, #1b1b1b 50%, #1d1d1d 36%);
+}

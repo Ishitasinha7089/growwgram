@@ -1,11 +1,12 @@
 .ggPost9305{
     height: fit-content;
     width: 600px;
-    background-color: #fff;
-    border: 1px solid #dbdbdb;
+    background-color: var(--primary);
+    border: 1px solid var(--grey);
     border-radius: 4px;
     margin-top: 30px;
     box-sizing: content-box;
+    color:var(--secondary)
     /* overflow: hidden; */
 }
 .ggPost9305 .ggPostHeader9305{
@@ -39,12 +40,13 @@
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggIconItem9305{
     margin-right: 12px;
     cursor: not-allowed;
+    fill:var(--primary);
+    stroke: var(--secondary);
 }
 
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .heart{
     transition: all 0.7s ease;
-    fill:var(--primary);
-    stroke: var(--secondary);
+
     cursor: pointer;
 }
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggLikePost9305{

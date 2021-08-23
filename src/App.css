@@ -10,7 +10,26 @@
 html{
   scroll-behavior: smooth;
 }
+html::-webkit-scrollbar {
+  width: 10px;
+}
 
+
+html::-webkit-scrollbar-track {
+  background: var(--primary);
+}
+
+
+html::-webkit-scrollbar-thumb {
+  background: var(--textGrey);
+  border-radius: 20px;
+  border: 2px solid var(--primary)
+}
+
+
+html::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 .App{
   background-color:var(--background);
   align-items: center;
@@ -36,6 +55,10 @@ html{
 }
 .App .showBackToTop{
   visibility: visible;
+}
+
+.App .ggBackToTop9305 .feather{
+  stroke: var(--secondary)
 }
 
 

@@ -1,37 +1,49 @@
-import { AxiosResponse } from 'axios';
 import { uniqBy } from 'lodash';
 import lscache from 'lscache';
 
 import unsplash from '../../utils/apis/unsplash';
-import { Photo } from '../../utils/helpers/types';
+import {
+  Dispatch,
+  Photo,
+  User,
+} from '../../utils/helpers/types';
 
-export const fetchPosts = () =>{
-    return async (dispatch: (arg0: { type: string; payload: object }) => void) => {
-        const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=10`)
-        const users = response.data.map((ele: Photo) =>{
-            return ele.user
-        })
-        // console.log(usernames);
-        const temp = uniqBy(users, 'username'); 
-        lscache.set('posts', response.data)
-        lscache.set('profileSugg', temp.slice(0,5))
-        // console.log(response.data);
-        
-        dispatch({ type: 'FETCH_POSTS', payload: response.data })
-        dispatch({ type: 'PROFILE_SUGG', payload: temp.slice(0,5) })
-    };
-};
-
-export const fetchSinglePost = () =>{
-    return async (dispatch: (arg0: { type: string; payload: AxiosResponse<any>; }) => void) => {
-        
-        const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=1`)
-        dispatch({ type: 'GET_ONE_POST', payload: response.data })
-    };
+const getUniqUsers = (response: Array<User>) =>{
+    const users = response.map((ele: Photo) =>{
+        return ele.user
+    })
+    const uniqUsers = uniqBy(users, 'username').slice(0,5)
+    lscache.set('profileSugg', uniqUsers)
+    return uniqUsers
 }
 
+export const initialPosts = () =>{
+    return async (dispatch: (arg: Dispatch) => void) =>{
+        const cachedPosts = lscache.get('posts')
+        let data;
+        if(cachedPosts && cachedPosts.length){
+            data = cachedPosts
+        } else{
+            const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=10`)
+            lscache.set('posts', response.data)
+            data = response.data
+        }
+        const uniqUsers = getUniqUsers(data)
+        dispatch({ type: 'FETCH_POSTS', payload: data })
+        dispatch({ type: 'PROFILE_SUGG', payload: uniqUsers })
+    }
+}
+
+export const fetchPosts = () =>{
+    return async (dispatch: (arg: Dispatch) => void) => {
+        const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=10`)
+        
+        // console.log(usernames);
+        dispatch({ type: 'FETCH_POSTS', payload: response.data })
+    };
+}
 export const getUser = (username: string) =>{
-    return async (dispatch: (arg0: { type: string; payload: AxiosResponse<any>; }) => void) => {
+    return async (dispatch: (arg: Dispatch) => void) => {
         
         const response = await unsplash.get(`users/${username}?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA`)
         // console.log(username, "action", response.data);
@@ -41,7 +53,7 @@ export const getUser = (username: string) =>{
 }
 
 export const getUserPhotos = (username: string) =>{
-    return async (dispatch: (arg0: { type: string; payload: AxiosResponse<any>; }) => void) => {
+    return async (dispatch: (arg: Dispatch) => void) => {
         
         const response = await unsplash.get(`users/${username}/photos?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA`)
         console.log(username, "action", response.data);

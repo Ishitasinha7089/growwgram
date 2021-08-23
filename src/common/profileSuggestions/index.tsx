@@ -1,21 +1,18 @@
 import './profileSuggestions.css';
 
-import {
-  useEffect,
-  useState,
-} from 'react';
+import { connect } from 'react-redux';
 
-import lscache from 'lscache';
-
+import { fetchPosts } from '../../store/actions';
 import { User } from '../../utils/helpers/types';
 import ProfileDesc from '../profileDesc';
 
-const ProfileSuggestions = () => {
-    const [profileSugg, setProfileSugg] = useState([])
-    useEffect(() => {
-        setProfileSugg(lscache.get('profileSugg'))
-    }, [])
+type Props = {
+    profileSugg: Array<User>
+}
 
+
+const ProfileSuggestions = ({ profileSugg } : Props) => {
+    
     return (
         profileSugg?
         <div className="ggProfileSuggestions9305 flexbox">
@@ -33,4 +30,9 @@ const ProfileSuggestions = () => {
     )
 }
 
-export default ProfileSuggestions;
+const mapsStateToProps = (state: any) =>{
+    return { profileSugg: state.profileSugg}
+}
+
+
+export default connect(mapsStateToProps, { fetchPosts })(ProfileSuggestions)

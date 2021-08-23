@@ -1,10 +1,15 @@
-export type Response = {
+type Response = {
     config: Object,
     data: { results?: object[], total?: number, total_pages?: number},
     headers: Object,
     request: XMLHttpRequest,
     status: number,
     statusText: string
+}
+
+export type Dispatch = {
+    type: string,
+    payload: Array<Photo | User | undefined>
 }
 
 type Links = {
@@ -76,4 +81,5 @@ export interface ProfileUser extends User {
     following_count?: number | null,
     photos?: Array<BasicPhoto>
 }
+
 

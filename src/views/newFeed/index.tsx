@@ -1,18 +1,13 @@
 import './newsFeed.css';
 import 'lscache';
 
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 import PostList from '../../common/postList';
 import ProfileSuggestions from '../../common/profileSuggestions';
-import { Photo } from '../../utils/helpers/types';
 
-type Props = {
-    fetchPosts: () => Promise<void>,
-    posts: Array<Photo>
-}
-
-export default class NewsFeed extends Component<Props>{
+export default class NewsFeed extends Component{
+    
     render() {
         return (
             <div className="ggNewsFeed9305 flexbox">
@@ -22,5 +17,7 @@ export default class NewsFeed extends Component<Props>{
         )
     }
 }
+
+
 
 
