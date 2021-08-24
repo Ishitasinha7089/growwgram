@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { useLocation } from 'react-router';
 
+import Modal from '../../common/modal';
 import UserPhoto from '../../common/userPhoto';
 import {
   getUser,
@@ -16,6 +17,7 @@ import {
 import Avatar from '../../ui/avatar';
 import {
   AvatarShimmer,
+  ImageShimmer,
   TextShimmer,
 } from '../../ui/shimmer';
 import {
@@ -34,9 +36,28 @@ type Props = {
 const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
     const location = useLocation()
     const [error, setError] = useState(null)
+    // const [user, setUser] = useState<ProfileUser>({})
+    // const [userPhotos, setUserPhotos] = useState<Array<Photo>>([])
+    const [openModal, setOpenModal] = useState(false)
+    const [selectedPhoto, setSelectedPhoto] = useState<Photo>({})
 
     useEffect(() => {
         window.scrollTo(0,0)
+        // if(lscache.get('user')){
+        //     setUser(lscache.get('user'))
+        // } else{
+        //     getUser(location.pathname.replace("/", ""))
+        //     .catch((err) =>{
+        //         setError(err.message)
+        //     })
+        //     setUser(userData)
+        // }
+        // if(lscache.get('userPhotos')){
+        //     setUserPhotos(lscache.get('userPhotos'))
+        // } else{
+        //     getUserPhotos(location.pathname.replace("/", ""))
+        //     setUserPhotos(userPhotosData)
+        // }
         getUser(location.pathname.replace("/", ""))
         .catch((err) =>{
             setError(err.message)
@@ -53,22 +74,22 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
             <AvatarShimmer />
     }
 
-    // const getUserPhotosUI = (userPhotos: Array<Photo>) =>{
-    //         let shimmers = [];
-    //         for (let i = 0; i < userPhotos.length; i++) {
-    //             shimmers.push(<ImageShimmer key={i} width="270px" height="270px" />)
-    //         }
-    //         return (
-    //             <div className="ggProfileBody9305">
-    //                 {
-    //                 userPhotos.map((photo: Photo, indx) =>{
-    //                     return <UserPhoto key={photo.id} src={photo?.urls?.small} likes={photo?.likes} />
-    //                 })
-    //                 }
-    //             </div>
-    //         )
+    const getUserPhotosUI = (userPhotos: Array<Photo>) =>{
+            let shimmers = [];
+            for (let i = 0; i < 3; i++) {
+                shimmers.push(<ImageShimmer key={i} width="270px" height="270px" />)
+            }
+            return (
+                <div className="ggProfileBody9305">
+                    {
+                    userPhotos.map((photo: Photo, indx) =>{
+                        return <UserPhoto photo={photo} setSelectedPhoto= {setSelectedPhoto} setOpenModal = {setOpenModal} />
+                    })
+                    }
+                </div>
+            )
             
-    // }
+    }
 
     const getUserInfo = (user: ProfileUser) =>{
         const isData = user.username || user.bio || user.name || user.total_photos || user.followers_count || user.following_count
@@ -78,9 +99,15 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
                 <span className="ggProfileUsername9305">{user.username}</span>
                 <div className="ggProfileUserStats9305 flexbox">
                 <div className="ggProfileUserStats9305 flexbox">
-                    <span><b>{user.total_photos}</b> Photos</span>
-                    <span><b>{user.followers_count}</b> Followers</span>
-                    <span><b>{user.following_count}</b> Following</span>
+                    <div className="ggProfileUserStItem9305 flexbox">
+                        <b>{user.total_photos}</b><span> Photos</span>
+                    </div>
+                    <div className="ggProfileUserStItem9305 flexbox">
+                        <b>{user.followers_count}</b><span> Followers</span>
+                    </div>
+                    <div className="ggProfileUserStItem9305 flexbox">
+                        <b>{user.following_count}</b><span> Following</span>
+                    </div>
                 </div>
                 </div>
                 <span className="ggProfileName9305">{user.name}</span>
@@ -106,7 +133,6 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
         );
     }
     return ( 
-        user.id?
         <div className="ggProfile9305 flexbox">
             <div className="ggProfileHeader9305 flexbox">
                 <div className="ggProfileAvatar">
@@ -115,17 +141,19 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
                 {getUserInfo(user)}
             </div>
             {/* {getUserPhotosUI(userPhotos)} */}
-            <div className="ggProfileBody9305">
+            <div className="ggProfileBody9305 flexbox">
             {
-                userPhotos.map((photo: Photo, indx) =>{
-                    return <UserPhoto key={photo.id} src={photo?.urls?.small} likes={photo?.likes} />
-                })
-                }
+                 userPhotos.map((photo: Photo, indx) =>{
+                     const key = (photo.id? photo.id : "") + indx
+                    return <UserPhoto key={key} photo={photo} setSelectedPhoto= {setSelectedPhoto} setOpenModal = {setOpenModal} />
+                 })
+                
+            }
             </div>
+            <Modal setOpenModal={setOpenModal} openModal={openModal} photo={selectedPhoto} />
         </div>
-        :
-        // null
-        getErrorUI()
+     
+        // getErrorUI()
     )
 }
 

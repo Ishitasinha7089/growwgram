@@ -26,8 +26,29 @@
         margin: 0;
         width: 100%;
     }
+    .ggProfileSuggestions9305 .ggProfileSuggInner9305 .ggProfileDesc9305:first-of-type{
+        margin-left: 0;
+    }
+    .ggProfileSuggestions9305 .ggProfileSuggInner9305 .ggProfileDesc9305:last-of-type{
+        margin-right: 0;
+    }
     .ggProfileSuggestions9305 .ggProfileSuggInner9305{
         flex-direction: row;
         overflow-x: scroll;
+        background-image: 
+	   
+    /* Shadows */ 
+    linear-gradient(to right, var(--background), var(--background)),
+    linear-gradient(to right, var(--background), var(--background)),
+  
+/* Shadow covers */ 
+    linear-gradient(to right, var(--shadowCover), rgba(255,255,255,0)),
+    linear-gradient(to left, var(--shadowCover), rgba(255,255,255,0));   
+
+  background-position: left center, right center, left center, right center;
+	background-repeat: no-repeat;
+	background-color: var(--background);
+	background-size: 50px 100%, 50px 100%, 40px 100%, 30px 100%;
+    background-attachment: local, local, scroll, scroll;
     }
 }

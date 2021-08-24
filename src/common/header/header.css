@@ -5,27 +5,43 @@
     background-color: var(--primary);
     top: 0;
     border-bottom: 1px solid var(--grey);
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     position: fixed;
     z-index: 99;
+    box-sizing: border-box;
+}
+.ggHeader9305 .ggHeaderInner9305{
+    width: 892px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: auto;
 }
 .ggHeader9305 a{
-    color: var(--secondary);
     text-decoration: none;
 }
-.ggHeader9305 h1{
+.ggHeader9305 a h1{
+    color: var(--secondary);
     font-family: InstagramFont;
     font-size: 26px;
-    width: 892px;
+}
+.ggHeader9305 .ggHeaderInner9305 img{
+    cursor: pointer;
 }
 @media screen and (max-width:940px){
     .ggHeader9305{
-        padding-left: 30px;
-        justify-content: flex-start;
+        padding:0 30px;
+        justify-content: space-between;
     }
-    .ggHeader9305 h1{
+}
+
+@media screen and (max-width:790px) {
+    .ggHeader9305{
         width: fit-content;
+        padding: 0;
+    }
+    .ggHeader9305 .ggHeaderInner9305{
+        width: 100vw;
+        justify-content: space-between;
+        padding: 0 20px;
     }
 }

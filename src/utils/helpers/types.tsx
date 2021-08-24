@@ -55,6 +55,7 @@ export interface Photo extends BasicPhoto {
     description?: string,
     height?: number,
     likes?: number,
+    location?: { name: string },
     links?: Links,
     tags?: Array<Tag>,
     user?: User

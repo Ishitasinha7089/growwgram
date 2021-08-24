@@ -18,6 +18,7 @@
 .ggProfileDesc9305 .ggProfileDescName9305 span:last-of-type{
     font-size: 14px;
     color:var(--textGrey);
+    white-space: pre-wrap;
 }
 
 @media screen and (max-width:790px) {

@@ -5,14 +5,13 @@ import unsplash from '../../utils/apis/unsplash';
 import {
   Dispatch,
   Photo,
-  User,
 } from '../../utils/helpers/types';
 
-const getUniqUsers = (response: Array<User>) =>{
+const getUniqUsers = (response: Array<Photo>) =>{
     const users = response.map((ele: Photo) =>{
         return ele.user
     })
-    const uniqUsers = uniqBy(users, 'username').slice(0,5)
+    const uniqUsers = uniqBy(users, 'username')
     lscache.set('profileSugg', uniqUsers)
     return uniqUsers
 }
@@ -39,6 +38,8 @@ export const fetchPosts = () =>{
         const response = await unsplash.get(`photos/random?client_id=cf4CqhocVFJtgibeZ2bAf1tv0Yu9uA5KN16l62DRWyA&count=10`)
         
         // console.log(usernames);
+        console.log(response.data);
+        
         dispatch({ type: 'FETCH_POSTS', payload: response.data })
     };
 }

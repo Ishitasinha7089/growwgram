@@ -1,0 +1,77 @@
+.ggModal9305{
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    top:0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+.ggModal9305 .ggModalInner9305{
+    flex-direction: row;
+    height: fit-content;
+}
+.ggModal9305 .ggModalInner9305 .ggModalImg9305{
+    width: 400px;
+    object-fit: cover;
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305{
+    width: fit-content;
+    flex: 1;
+    background-color: var(--primary);
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305 .ggModalInfoHead9305{
+    padding: 10px;
+    border-bottom: 1px solid var(--grey);
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305 .ggModalComments9305{
+    max-width: 400px;
+    padding: 12px;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305 .ggModalComments9305 span{
+    word-break: break-all;
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305 .ggModalComments9305 i{
+    color: var(--textGrey);
+    margin-top: 8px;
+}
+.ggModal9305 .ggModalInner9305 .ggModalInfo9305 .ggModalInfoLikes9305 {
+    flex-direction: column;
+    padding: 16px;
+    border-top: 1px solid var(--grey);
+}
+.ggModalInfo9305 .ggModalInfoLikes9305 .ggIcons9305{
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.ggModalInfo9305 .ggModalInfoLikes9305  .ggIcons9305 .ggIconItem9305{
+    margin-right: 12px;
+    cursor: not-allowed;
+    transition: none !important;
+}
+
+.ggModalInfo9305 .ggModalInfoLikes9305  .ggIcons9305 .heart{
+    fill:var(--primary);
+    stroke: var(--secondary);
+    cursor: pointer;
+}
+.ggModalInfo9305 .ggModalInfoLikes9305  .ggIcons9305 .ggLikePost9305{
+    fill:red;
+    stroke: red;
+}
+.ggModalInfo9305 .ggModalInfoLikes9305  .ggIcons9305 .heart:active{
+    animation: animateHeart 0.3s ease;
+}
+
+.ggModalInfo9305 .ggModalInfoLikes9305  .ggPostLikes9305{
+    font-size: 17px;
+}

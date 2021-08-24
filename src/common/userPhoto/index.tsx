@@ -5,19 +5,24 @@ import React, { useState } from 'react';
 import notFound from '../../styles/icons/404-page-not-found.svg';
 import { ReactComponent as Heart } from '../../styles/icons/heart.svg';
 import { ImageShimmer } from '../../ui/shimmer';
+import { Photo } from '../../utils/helpers/types';
 
-export default function UserPhoto({src, likes} : { src: string | undefined, likes: number | undefined}) {
+export default function UserPhoto({photo, setOpenModal, setSelectedPhoto} : { photo: Photo, setOpenModal: any, setSelectedPhoto: any}) {
     const [hover, setHover] = useState(false)
     const displayAltImg = (e: any) =>{
         e.target.src = notFound
     }
+    const onPhotoClick = () =>{
+        setOpenModal(true)
+        setSelectedPhoto(photo)
+    }
     return (
-         src && likes!==undefined?
-        <div onMouseOver={() =>setHover(true)} onMouseLeave={() =>setHover(false)} className="ggProfileUserPhoto9305">
-            <img className="ggUserPhoto9305" src={src} alt="userphoto" onError={displayAltImg} />
+        photo.urls?.full && photo.likes!==undefined?
+        <div onClick={onPhotoClick} onMouseOver={() =>setHover(true)} onMouseLeave={() =>setHover(false)} className="ggProfileUserPhoto9305">
+            <img className="ggUserPhoto9305" src={photo.urls?.full} alt="userphoto" onError={displayAltImg} />
             <div className={`ggUserPhotoOverlay9305 flexbox ${ hover? "ggShowOverlay9305" : ""}`}>
                 <Heart viewBox="0 0 50 50" className="ggUserPhotoLikes9305" />
-                <span>{likes}</span>
+                <span>{photo.likes}</span>
             </div>
         </div>
         :

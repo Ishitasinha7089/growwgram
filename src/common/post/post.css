@@ -13,16 +13,17 @@
     padding: 16px;
     flex-direction: row;
     align-items: center;
+    border-bottom: 1px solid var(--grey);
 }
-.ggPost9305 .ggPostHeader9305 .ggAvatar9305{
+/* .ggPost9305 .ggPostHeader9305 .ggAvatar9305{
     height: 40px;
     width: 40px;
     margin-right: 16px;
-}
+} */
 .ggPost9305 .ggPostImage9305{
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
-    max-height: 740px;
+    max-height: 700px;
     object-position: center;
 }
 
@@ -40,20 +41,19 @@
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggIconItem9305{
     margin-right: 12px;
     cursor: not-allowed;
-    fill:var(--primary);
-    stroke: var(--secondary);
+    transition: none !important;
 }
 
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .heart{
-    transition: all 0.7s ease;
-
+    fill:var(--primary);
+    stroke: var(--secondary);
     cursor: pointer;
 }
 .ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggLikePost9305{
     fill:red;
     stroke: red;
 }
-.ggPost9305 .ggPostFooter9305 .ggIcons9305 .ggIconItem9305:active{
+.ggPost9305 .ggPostFooter9305 .ggIcons9305 .heart:active{
     animation: animateHeart 0.3s ease;
 }
 
@@ -95,6 +95,9 @@
     color: var(--textGrey);
     font-weight: 400;
 }
+.ggPost9305 .ggPostHeader9305 .ggProfileDesc9305{
+    margin: 0;
+}
 
 @keyframes animateHeart {
     from{
@@ -114,9 +117,9 @@
     }
 }
 
-@media screen and (max-width:440px) {
+@media screen and (max-width:445px) {
     .ggPost9305{
-        width: 300px;
+        width: calc(100vw - 2px);
     }
     .ggPost9305 .ggPostImage9305{
         height: 400px;

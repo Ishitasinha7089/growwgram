@@ -41,8 +41,10 @@ const Header = () => {
     }
     return (
         <div className="ggHeader9305 flexbox">
-            <Link to="/"><h1>Growwgram</h1></Link>
-            <img onClick={changeTheme} src={src} alt="theme" />
+            <div className="ggHeaderInner9305 flexbox">
+                <Link to="/"><h1>Growwgram</h1></Link>
+                <img onClick={changeTheme} src={src} alt="theme" />
+            </div>
         </div>
     )
 }
