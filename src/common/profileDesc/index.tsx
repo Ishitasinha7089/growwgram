@@ -14,7 +14,7 @@ type Props = {
 export default function ProfileDesc({src, username, title} : Props) {
     const history = useHistory()
     const goToProfile = () =>{
-        history.push(`/${username}`)
+        history.push(`/profile/${username}`)
     }
     return (
         <div className="ggProfileDesc9305 flexbox">

@@ -36,7 +36,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={NewsFeed} />
-          <Route path="/:username" component={Profile} />
+          <Route path="/profile/:username" component={Profile} />
           <Redirect from= "*" to="/" /> 
         </Switch>
         <div className={`ggBackToTop9305 flexbox ${backtoTop? "showBackToTop" : null}`}>

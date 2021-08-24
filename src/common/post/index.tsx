@@ -20,7 +20,7 @@ import ProfileDesc from '../profileDesc';
 export default function Post({post}: { post: Photo}){
     const postDesc = post.description ? trimDesc(post.description) : post.alt_description
     const uploadedTimeStamp = getTimeUploaded(post?.created_at)
-    const profileUrl = `/${post?.user?.username}`
+    const profileUrl = `/profile/${post?.user?.username}`
     const history = useHistory()
     const [likes, setLikes] = useState(post?.likes? post.likes : 0)
     const goToProfile = () =>{

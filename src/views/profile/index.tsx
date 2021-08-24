@@ -58,11 +58,11 @@ const Profile = ({getUser, user, getUserPhotos, userPhotos}: Props) => {
         //     getUserPhotos(location.pathname.replace("/", ""))
         //     setUserPhotos(userPhotosData)
         // }
-        getUser(location.pathname.replace("/", ""))
+        getUser(location.pathname.replace("/profile/", ""))
         .catch((err) =>{
             setError(err.message)
         })
-        getUserPhotos(location.pathname.replace("/", ""))
+        getUserPhotos(location.pathname.replace("/profile/", ""))
         console.log(location, userPhotos);
         
     },[location])
