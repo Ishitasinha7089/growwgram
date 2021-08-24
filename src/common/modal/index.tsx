@@ -11,6 +11,7 @@ export default function Modal({photo, openModal, setOpenModal}: {photo: Photo, o
     const [likes, setLikes] = useState(photo?.likes? photo.likes : 0)
 
     const likePost = (e: any) =>{
+        e.stopPropagation()
         e.target.classList.toggle('ggLikePost9305')
         if(e.target.classList.contains('ggLikePost9305')){
             setLikes(likes+1)
@@ -20,10 +21,11 @@ export default function Modal({photo, openModal, setOpenModal}: {photo: Photo, o
     }
     const style = openModal ? {display:"flex"} : {display:"none"}
     return (
-        photo? 
+        
         <div onClick={() =>setOpenModal(false)} style={style} className="ggModal9305">
+           { photo.urls? 
             <div className="ggModalInner9305 flexbox">
-                <img className="ggModalImg9305" src={photo.urls?.raw} alt="modalimage" />
+                <img className="ggModalImg9305" src={photo.urls?.full} alt="modalimage" />
                 <div className="ggModalInfo9305 flexbox">
                     <div className="ggModalInfoHead9305">
                         <ProfileDesc src={photo.user?.profile_image?.medium} username={photo.user?.username} title={undefined} />
@@ -37,12 +39,12 @@ export default function Modal({photo, openModal, setOpenModal}: {photo: Photo, o
                             <Heart onClick={likePost} className="ggIconItem9305 heart" />
                             <Share className="ggIconItem9305" />
                         </div>
-                        <span>{photo.likes} Likes</span>
+                        <span>{likes} Like{likes >1?  "s" : ""}</span>
                     </div>
                 </div>
             </div>
+            :
+            <h1>loacsdding</h1>}
         </div>
-        :
-        <h1>loading</h1>
     )
 }
