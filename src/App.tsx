@@ -5,6 +5,7 @@ import { useState } from 'react';
 // import { Switch, Route} from 'react-router'
 import {
   BrowserRouter as Router,
+  Redirect,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -36,6 +37,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={NewsFeed} />
           <Route path="/:username" component={Profile} />
+          <Redirect from= "*" to="/" /> 
         </Switch>
         <div className={`ggBackToTop9305 flexbox ${backtoTop? "showBackToTop" : null}`}>
           <Chevron onClick={scrollToTop} />
